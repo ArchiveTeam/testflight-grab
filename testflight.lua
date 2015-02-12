@@ -65,7 +65,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
         local newurl3 = "https://testflightapp.com/join/login/"..item_value.."/"
         check(newurl3)
       end
-      for newurl in string.gmatch('"(https?://[^"]+)"') do
+      for newurl in string.gmatch(html, '"(https?://[^"]+)"') do
         if string.match(newurl, "%.cloudfront%.net") or string.match(newurl, item_value) then
           check(newurl)
         end
