@@ -65,6 +65,11 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
         local newurl3 = "https://testflightapp.com/join/login/"..item_value.."/"
         check(newurl3)
       end
+      for newurl in string.gmatch('"(https?://[^"]+)"') do
+        if string.match(newurl, "%.cloudfront%.net") or string.match(newurl, item_value) then
+          check(newurl)
+        end
+      end
     end
     if string.match(url, "testflightapp%.com/api/builds/[^/]+/6280ca3ee10631fd6817100ffd1ee849%-MTMzMzc3%.plist") then
       html = read_file(file)
