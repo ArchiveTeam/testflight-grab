@@ -31,7 +31,7 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
   end
   
   if item_type == "app" and (downloaded[url] ~= true and addedtolist[url] ~= true) then
-    if string.match(url, item_value) then
+    if string.match(url, item_value) or string.match(url, "%.cloudfront%.net") then
       return verdict
     elseif html == 0 then
       return verdict
@@ -57,7 +57,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
   if item_type == "app" then
     if string.match(url, "testflightapp%.com/install/"..item_value.."/") then
       html = read_file(file)
-      if string.match(html, "find the build you are looking for%. Perhaps it was removed or you were sent an incorrect url%.") then
+      if not string.match(html, "find the build you are looking for%. Perhaps it was removed or you were sent an incorrect url%.") then
         local newurl1 = "https://www.testflightapp.com/api/builds/"..item_value.."/6280ca3ee10631fd6817100ffd1ee849-MTMzMzc3.plist"
         check(newurl1)
         local newurl2 = "https://www.testflightapp.com/join/"..item_value.."/"
