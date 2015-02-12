@@ -66,7 +66,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
         check(newurl3)
       end
     end
-    if stringmatch(url, "testflightapp%.com/api/builds/"..item_value.."/6280ca3ee10631fd6817100ffd1ee849%-MTMzMzc3%.plist") then
+    if string.match(url, "testflightapp%.com/api/builds/"..item_value.."/6280ca3ee10631fd6817100ffd1ee849%-MTMzMzc3%.plist") then
       html = read_file(file)
       for newurl in string.gmatch(html, ">(https?://[^<]+)<") do
         check(newurl)
