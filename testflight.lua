@@ -56,19 +56,27 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
 
   if item_type == "app" then
     if string.match(url, "testflightapp%.com/install/"..item_value.."/") then
+  io.stdout:write("1  \n")
+  io.stdout:flush()
       html = read_file(file)
       if not string.match(html, "find the build you are looking for%. Perhaps it was removed or you were sent an incorrect url%.") then
-        local newurl1 = "https://www.testflightapp.com/api/builds/"..item_value.."/6280ca3ee10631fd6817100ffd1ee849-MTMzMzc3.plist"
+  io.stdout:write("2  \n")
+  io.stdout:flush()
+        local newurl1 = "https://testflightapp.com/api/builds/"..item_value.."/6280ca3ee10631fd6817100ffd1ee849-MTMzMzc3.plist"
         check(newurl1)
-        local newurl2 = "https://www.testflightapp.com/join/"..item_value.."/"
+        local newurl2 = "https://testflightapp.com/join/"..item_value.."/"
         check(newurl2)
-        local newurl3 = "https://www.testflightapp.com/join/login/"..item_value.."/"
+        local newurl3 = "https://testflightapp.com/join/login/"..item_value.."/"
         check(newurl3)
       end
     end
     if string.match(url, "testflightapp%.com/api/builds/"..item_value.."/6280ca3ee10631fd6817100ffd1ee849%-MTMzMzc3%.plist") then
       html = read_file(file)
+  io.stdout:write("3  \n")
+  io.stdout:flush()
       for newurl in string.gmatch(html, ">(https?://[^<]+)<") do
+  io.stdout:write("4  \n")
+  io.stdout:flush()
         check(newurl)
       end
     end
