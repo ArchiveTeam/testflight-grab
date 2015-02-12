@@ -9,6 +9,12 @@ local item_value = os.getenv('item_value')
 local downloaded = {}
 local addedtolist = {}
 
+--exclude links:
+downloaded["https://d3qktfj96j46kx.cloudfront.net/deathstar207/js/libraries.js"] = true
+downloaded["https://d3qktfj96j46kx.cloudfront.net/deathstar207/css/base.css"] = true
+downloaded["https://d3qktfj96j46kx.cloudfront.net/deathstar207/img/apple-touch-icon-precomposed.png"] = true
+downloaded["https://d3qktfj96j46kx.cloudfront.net/deathstar207/img/favicon.ico"] = true
+
 read_file = function(file)
   if file then
     local f = assert(io.open(file))
