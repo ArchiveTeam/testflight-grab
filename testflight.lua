@@ -107,7 +107,7 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
     end
   end
   
-  if string.match(url["url"], "https://testflightapp.com/api/builds/[^/]+/6280ca3ee10631fd6817100ffd1ee849-MTMzMzc3.plist") and status_code == 410 then
+  if string.match(url["url"], "https?://testflightapp%.com/api/builds/[^/]+/6280ca3ee10631fd6817100ffd1ee849%-MTMzMzc3%.plist") and status_code == 410 then
     io.stdout:write("Server returned "..http_stat.statcode..". Sleeping.\n")
     io.stdout:flush()
 
