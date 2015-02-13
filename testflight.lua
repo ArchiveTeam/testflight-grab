@@ -63,14 +63,12 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
   if item_type == "app" then
     if string.match(url, "testflightapp%.com/install/[^/]+/") then
       html = read_file(file)
-      if not string.match(html, "find the build you are looking for%. Perhaps it was removed or you were sent an incorrect url%.") then
-        local newurl1 = "https://testflightapp.com/api/builds/"..item_value.."/6280ca3ee10631fd6817100ffd1ee849-MTMzMzc3.plist"
-        check(newurl1)
-        local newurl2 = "https://testflightapp.com/join/"..item_value.."/"
-        check(newurl2)
-        local newurl3 = "https://testflightapp.com/join/login/"..item_value.."/"
-        check(newurl3)
-      end
+      local newurl1 = "https://testflightapp.com/api/builds/"..item_value.."/6280ca3ee10631fd6817100ffd1ee849-MTMzMzc3.plist"
+      check(newurl1)
+      local newurl2 = "https://testflightapp.com/join/"..item_value.."/"
+      check(newurl2)
+      local newurl3 = "https://testflightapp.com/join/login/"..item_value.."/"
+      check(newurl3)
       for newurl in string.gmatch(html, '"(https?://[^"]+)"') do
         if string.match(newurl, "%.cloudfront%.net") or string.match(newurl, item_value) then
           check(newurl)
