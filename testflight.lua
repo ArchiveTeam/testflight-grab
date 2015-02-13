@@ -14,6 +14,7 @@ downloaded["https://d3qktfj96j46kx.cloudfront.net/deathstar207/js/libraries.js"]
 downloaded["https://d3qktfj96j46kx.cloudfront.net/deathstar207/css/base.css"] = true
 downloaded["https://d3qktfj96j46kx.cloudfront.net/deathstar207/img/apple-touch-icon-precomposed.png"] = true
 downloaded["https://d3qktfj96j46kx.cloudfront.net/deathstar207/img/favicon.ico"] = true
+downloaded["https://d3qktfj96j46kx.cloudfront.net/deathstar207/css/thin.css"] = true
 
 read_file = function(file)
   if file then
