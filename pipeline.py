@@ -58,7 +58,7 @@ if not WGET_LUA:
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
 VERSION = "20150225.01"
-USER_AGENT = 'ArchiveTeam'
+USER_AGENT = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16'
 TRACKER_ID = 'testflight'
 TRACKER_HOST = 'tracker.archiveteam.org'
 
@@ -194,9 +194,11 @@ class WgetArgs(object):
         item['item_type'] = item_type
         item['item_value'] = item_value
         
-        assert item_type in ('app')
+        assert item_type in ('app', 'app_mobile')
         
         if item_type == 'app':
+            wget_args.append('https://testflightapp.com/install/{0}/'.format(item_value))
+        if item_type == 'app_mobile':
             wget_args.append('https://testflightapp.com/install/{0}/'.format(item_value))
         else:
             raise Exception('Unknown item')
