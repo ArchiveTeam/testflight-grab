@@ -45,6 +45,14 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
     else
       return false
     end
+  elseif item_type == "app_mobile" and (downloaded[url] ~= true and addedtolist[url] ~= true) then
+    if string.match(url, item_value) then
+      return verdict
+    elseif html == 0 then
+      return verdict
+    else
+      return false
+    end
   end
   
 end
@@ -81,6 +89,13 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
       for newurl in string.gmatch(html, ">(https?://[^<]+)<") do
         check(newurl)
       end
+    end
+  elseif item_type == "app_mobile" then
+    if string.match(url, "testflightapp%.com/install/[^/]+/") or string.match(url, "testflightapp%.com/m/build/[0-9]+/[0-9]+") then
+      html = read_file(file)
+      local newurl1 = string.match(html, "'(/device/[^%.]+%.mobileconfig)'")
+      local newurl = "https://www.testflightapp.com"..newurl1
+      check(newurl)
     end
   end
   
